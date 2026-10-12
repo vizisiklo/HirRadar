@@ -1,0 +1,92 @@
+name: Publish public Windows EXE
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: 'Existing version tag to release (e.g. v1.0.2)'
+        required: true
+        default: 'v1.0.2'
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build and publish portable EXE
+    runs-on: windows-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Verify public repository and release tag
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+        run: |
+          if ($env:RELEASE_TAG -notmatch '^v[0-9]+\.[0-9]+\.[0-9]+$') {
+            throw "Invalid release tag: $env:RELEASE_TAG"
+          }
+          $visibility = gh api "repos/$env:GITHUB_REPOSITORY" --jq '.visibility'
+          if ($LASTEXITCODE -ne 0) { throw "Could not check repository visibility." }
+          if ($visibility.Trim() -ne 'public') {
+            throw "Repository is not PUBLIC. Go to Settings > General > Danger Zone > Change repository visibility before publishing a public EXE."
+          }
+
+      - name: Checkout the existing version tag
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.release_tag }}
+          persist-credentials: false
+
+      - name: Install .NET 8 SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Validate project version matches the tag
+        shell: pwsh
+        env:
+          RELEASE_TAG: ${{ inputs.release_tag }}
+        run: |
+          [xml]$proj = Get-Content -Raw -LiteralPath 'HirRadar.csproj'
+          $expected = $env:RELEASE_TAG.Substring(1)
+          $actual = [string]$proj.Project.PropertyGroup.Version
+          if ($actual -ne $expected) {
+            throw "Tag $env:RELEASE_TAG does not match project version $actual."
+          }
+
+      - name: Build Windows x64 portable Release
+        shell: powershell
+        run: .\build.ps1
+
+      - name: Publish EXE, ZIP and SHA-256 to GitHub Releases
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+        run: |
+          $tag = $env:RELEASE_TAG
+          $zip = "dist/HirRadar_${tag}_Windows_x64.zip"
+          $sha = "dist/HirRadar_${tag}_Windows_x64_SHA256.txt"
+          $exe = "publish/HirRadar.exe"
+          foreach ($file in @($zip, $sha, $exe)) {
+            if (-not (Test-Path -LiteralPath $file -PathType Leaf)) {
+              throw "Missing release file: $file"
+            }
+          }
+          $notes = "docs/RELEASE_NOTES_" + $tag.Substring(1).Replace(".", "_") + ".md"
+          $args = @(
+            'release', 'create', $tag,
+            $exe, $zip, $sha,
+            '--title', "HírRadar $tag",
+            '--verify-tag'
+          )
+          if (Test-Path -LiteralPath $notes -PathType Leaf) {
+            $args += @('--notes-file', $notes)
+          } else {
+            $args += @('--notes', "HírRadar $tag – portable unsigned Windows x64 application. May trigger SmartScreen.")
+          }
+          & gh @args
+          if ($LASTEXITCODE -ne 0) { throw "GitHub Release creation failed." }
