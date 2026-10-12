@@ -1,4 +1,7 @@
 <p align="center"><img src="Assets/HirRadarHeaderLogo.png" alt="HírRadar" width="350"></p>
+<p align="center"><strong>Windows 10/11 x64 · .NET 8 / WPF · HírRadar v1.0.2</strong></p>
+<p align="center"><a href="https://vizisiklo.github.io/HirRadar/"><strong>Bemutatóoldal</strong></a> · <a href="https://github.com/vizisiklo/HirRadar/releases/tag/v1.0.2"><strong>Windows letöltés</strong></a> · <a href="docs/USER_GUIDE.md">Használati útmutató</a></p>
+<p align="center"><img src="Assets/HirRadarSplashSoftEdge.png" alt="A HírRadar eredeti nyitóképernyője" width="630"></p>
 
 # HírRadar
 
@@ -6,7 +9,7 @@
 
 **Készítette:** Közbeszól Média · **Aktuális verzió:** v1.0.2 · **Platform:** Windows 10/11 x64
 
-> **Private repository.** © 2026 Közbeszól Média. Minden jog fenntartva. A forráskódhoz nem tartozik nyílt forráskódú licenc.
+> **Nyilvános forráskód, minden jog fenntartva.** © 2026 Közbeszól Média. A repository megtekinthetősége nem jelent nyílt forráskódú licencet vagy szabad újrafelhasználási jogot.
 
 ## Mi a HírRadar?
 
@@ -77,7 +80,7 @@ A repositoryban a **forráskód** található. A GitHub Actionsből származó b
 
 ## English summary
 
-**HírRadar** is a Hungarian-language Windows 10/11 desktop news monitoring app built with C#, WPF and .NET 8. It combines configurable RSS/Atom and selected HTML news feeds with filters, search, local storage, a text-only article reader, notifications, diagnostics and portable builds. Developed by **Közbeszól Média**. **Private repository; all rights reserved.**
+**HírRadar** is a Hungarian-language Windows 10/11 desktop news monitoring app built with C#, WPF and .NET 8. It combines configurable RSS/Atom and selected HTML news feeds with filters, search, local storage, a text-only article reader, notifications, diagnostics and portable builds. Developed by **Közbeszól Média**. **Public source repository; all rights reserved. No open-source license is granted.**
 
 ---
 

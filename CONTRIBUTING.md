@@ -1,6 +1,6 @@
 # Fejlesztés és közreműködés
 
-A HírRadar **privát, szerzői jogvédelem alatt álló projekt**. A repositoryhoz kapott hozzáférés önmagában nem jogosítja fel a hozzáférőt a forráskód terjesztésére vagy más projektekbe történő átvételére.
+A HírRadar **nyilvánosan megtekinthető, szerzői jogvédelem alatt álló projekt**. A repositoryhoz kapott hozzáférés önmagában nem jogosítja fel a hozzáférőt a forráskód terjesztésére vagy más projektekbe történő átvételére.
 
 ## Munkafolyamat
 
