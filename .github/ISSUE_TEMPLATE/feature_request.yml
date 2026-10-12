@@ -1,0 +1,21 @@
+name: Fejlesztési javaslat
+description: Új funkció vagy módosítás
+title: "[Feature] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Megoldandó probléma
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Javasolt megoldás
+    validations:
+      required: true
+  - type: textarea
+    id: compatibility
+    attributes:
+      label: Kompatibilitási és UI-megfontolások

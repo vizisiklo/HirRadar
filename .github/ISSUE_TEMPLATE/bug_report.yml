@@ -1,0 +1,40 @@
+name: Hibabejelentés
+description: HírRadar hiba dokumentálása
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "Ne adj meg jelszavakat, tokeneket vagy érzékeny adatokat."
+  - type: input
+    id: version
+    attributes:
+      label: Alkalmazásverzió
+      placeholder: "1.0.2"
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Windows-verzió
+      placeholder: Windows 11 x64
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reprodukálási lépések
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Elvárt működés
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Tényleges működés és hibaüzenet
+    validations:
+      required: true

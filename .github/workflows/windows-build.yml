@@ -1,0 +1,41 @@
+name: Windows build (unsigned)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Build portable Release
+        shell: powershell
+        run: .\build.ps1
+      - name: Upload unsigned artifact
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: HirRadar-win-x64-unsigned
+          path: |
+            dist/HirRadar_v1.0.2_Windows_x64.zip
+            dist/HirRadar_v1.0.2_Windows_x64_SHA256.txt
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload build log on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: HirRadar-build-log
+          path: BUILD_RELEASE.log
+          if-no-files-found: ignore
+          retention-days: 7
