@@ -1,0 +1,20 @@
+<Window x:Class="HirRadar.TopicWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="HírRadar – Témakategóriák" Width="790" Height="580" MinWidth="630" MinHeight="470"
+        WindowStartupLocation="CenterOwner" Icon="Assets/HirRadarIcon.png" Background="#081725" Foreground="#E3F0FA" FontFamily="Segoe UI" ShowInTaskbar="False">
+  <Grid Margin="23">
+    <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+    <TextBlock Text="TÉMÁK KULCSSZAVAI" FontWeight="Bold" FontSize="22" Foreground="#54D9D5"/>
+    <TextBlock Grid.Row="1" Margin="0,8,0,17" TextWrapping="Wrap" Foreground="#A7C3D6" Text="Válassz kategóriát. Egy sorba egy szó vagy kifejezés kerüljön. A módosítás a korábbi hírekre is érvényes lesz; a besorolás kizárólag a címekből történik."/>
+    <Grid Grid.Row="2">
+      <Grid.ColumnDefinitions><ColumnDefinition Width="230"/><ColumnDefinition Width="14"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+      <ListBox x:Name="CategoryList" Background="#102B40" Foreground="#EAF5FC" BorderBrush="#31576D" SelectionChanged="Category_Changed" FontSize="14"/>
+      <TextBox Grid.Column="2" x:Name="TermsBox" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" VerticalContentAlignment="Top" Padding="12" FontSize="14" TextChanged="Terms_Changed"/>
+    </Grid>
+    <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,17,0,0">
+      <Button Content="Alapértékek" Click="Defaults_Click" Margin="0,0,10,0"/>
+      <Button Content="Mégse" IsCancel="True" Width="100" Margin="0,0,10,0"/>
+      <Button Content="Mentés" Click="Save_Click" IsDefault="True" Width="110" Background="#12666D"/>
+    </StackPanel>
+  </Grid>
+</Window>

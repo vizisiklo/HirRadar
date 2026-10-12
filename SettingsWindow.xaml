@@ -1,0 +1,28 @@
+<Window x:Class="HirRadar.SettingsWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="HírRadar – Háttérműködés és értesítések" Width="560" Height="420"
+        MinWidth="530" MinHeight="390" ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
+        Background="#081725" Foreground="#E3F0FA" FontFamily="Segoe UI" Icon="Assets/HirRadarIcon.png" ShowInTaskbar="False">
+  <Grid Margin="26,22,26,20">
+    <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+    <StackPanel>
+      <TextBlock Text="HÁTTÉRMŰKÖDÉS" FontSize="23" FontWeight="Bold" Foreground="#54D9D5"/>
+      <TextBlock Text="Az ötpercenkénti hírfigyelés a rejtett ablak mellett is működik."
+                 Margin="0,7,0,0" TextWrapping="Wrap" Foreground="#9CBBCD" FontSize="12"/>
+    </StackPanel>
+    <StackPanel Grid.Row="1" Margin="0,24,0,0">
+      <CheckBox x:Name="MinimizeCheck" Content="Minimalizáláskor a rendszertálcára kerüljön" Margin="0,0,0,17" FontSize="13"/>
+      <CheckBox x:Name="CloseCheck" Content="Az X gombbal bezárás helyett fusson tovább a háttérben" Margin="0,0,0,17" FontSize="13"/>
+      <CheckBox x:Name="NotificationsCheck" Content="Általános értesítés minden új hírről (külön a figyelt hírektől)" Margin="0,0,0,17" FontSize="13"/>
+      <CheckBox x:Name="StartupCheck" Content="Automatikus indulás Windows-bejelentkezéskor (rejtve)" Margin="0,0,0,12" FontSize="13"/>
+      <Border Background="#102B40" CornerRadius="6" Padding="14,11" Margin="0,6,0,0">
+        <TextBlock Foreground="#B6D0E1" TextWrapping="Wrap" FontSize="12"
+                   Text="A tényleges kilépéshez kattints jobb gombbal a HírRadar tálcaikonjára, majd válaszd a Kilépés pontot. Az automatikus indítás csak a jelenlegi Windows-felhasználóra vonatkozik."/>
+      </Border>
+    </StackPanel>
+    <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0">
+      <Button Content="Mégse" IsCancel="True" Margin="0,0,10,0" Width="104"/>
+      <Button Content="Mentés" Click="Save_Click" IsDefault="True" Width="120" Background="#12666D"/>
+    </StackPanel>
+  </Grid>
+</Window>

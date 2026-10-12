@@ -1,0 +1,39 @@
+<Window x:Class="HirRadar.SplashWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Width="960" Height="720"
+        WindowStyle="None" ResizeMode="NoResize"
+        ShowInTaskbar="False" ShowActivated="False"
+        AllowsTransparency="True" Background="Transparent"
+        WindowStartupLocation="CenterScreen" Topmost="True"
+        Focusable="False">
+  <!-- Az eredeti, teljes HírRadar-kép változatlan, nincs keret vagy háttérpanel. -->
+  <Grid>
+    <Image Source="Assets/HirRadarSplashSoftEdge.png" Stretch="Fill"
+           SnapsToDevicePixels="True" IsHitTestVisible="False"/>
+    <Grid VerticalAlignment="Bottom" Margin="28,0,28,24"
+          IsHitTestVisible="False">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="Auto"/>
+      </Grid.ColumnDefinitions>
+      <TextBlock x:Name="LoadingStatus"
+                 Text="HírRadar indítása..."
+                 FontFamily="Segoe UI" FontSize="14" FontWeight="SemiBold"
+                 Foreground="#C5F9FF" VerticalAlignment="Bottom"
+                 TextTrimming="CharacterEllipsis" Margin="0,0,18,0">
+        <TextBlock.Effect>
+          <DropShadowEffect Color="#000000" Opacity="0.92" BlurRadius="5" ShadowDepth="1" />
+        </TextBlock.Effect>
+      </TextBlock>
+      <TextBlock Grid.Column="1"
+                 Text="Készítette: Közbeszól Média - Minden jog fenntartva 2026"
+                 FontFamily="Segoe UI" FontSize="12" FontWeight="Medium"
+                 Foreground="#EAF6FF" VerticalAlignment="Bottom" TextAlignment="Right">
+        <TextBlock.Effect>
+          <DropShadowEffect Color="#000000" Opacity="0.92" BlurRadius="5" ShadowDepth="1" />
+        </TextBlock.Effect>
+      </TextBlock>
+    </Grid>
+  </Grid>
+</Window>

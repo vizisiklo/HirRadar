@@ -1,0 +1,45 @@
+# Visual Studio / .NET build output
+.vs/
+.vscode/
+.idea/
+**/bin/
+**/obj/
+Debug/
+Release/
+publish/
+dist/
+TestResults/
+
+# User-specific state and generated artifacts
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.pidb
+*.pdb
+*.cache
+*.tmp
+*.temp
+*.bak
+*.log
+*.trx
+*.coverage
+*.coveragexml
+
+# Local HírRadar application state if a copy is made inside the workspace
+news.json
+sources.json
+settings.json
+refresh_history.json
+logs/
+image-cache/
+image_cache/
+
+# Credential / environment files, if used in future releases
+.env
+.env.*
+!.env.example
+*.pfx
+*.p12
+*.pem
+*.key

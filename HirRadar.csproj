@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <AssemblyName>HirRadar</AssemblyName>
+    <RootNamespace>HirRadar</RootNamespace>
+    <ApplicationIcon>Assets\HirRadar.ico</ApplicationIcon>
+    <Version>1.0.2</Version>
+    <AssemblyVersion>1.0.2.0</AssemblyVersion>
+    <FileVersion>1.0.2.0</FileVersion>
+    <InformationalVersion>1.0.2</InformationalVersion>
+    <Company>Közbeszól Média</Company>
+    <Product>HírRadar</Product>
+    <Authors>Közbeszól Média</Authors>
+    <Copyright>© 2026 Közbeszól Média. Minden jog fenntartva.</Copyright>
+    <Description>HírRadar – belföldi hírek és hírforrások figyelése</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.13.0" />
+    <Resource Include="Assets\HirRadarIcon.png" />
+    <Resource Include="Assets\HirRadarSplash.png" />
+    <Resource Include="Assets\HirRadarSplashSoftEdge.png" />
+    <Resource Include="Assets\HirRadarHeaderLogo.png" />
+  </ItemGroup>
+</Project>

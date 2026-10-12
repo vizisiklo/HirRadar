@@ -1,0 +1,13 @@
+<Window x:Class="HirRadar.ViewNameWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="HírRadar – mentett nézet" Width="490" Height="213" ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
+        Background="#0B1F30" Foreground="#E3F0FA" FontFamily="Segoe UI" Icon="Assets/HirRadarIcon.png">
+  <Grid Margin="21">
+    <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+    <TextBlock Text="Mentett szűrőnézet neve" FontWeight="SemiBold" FontSize="16" Margin="0,0,0,12"/>
+    <TextBox x:Name="NameBox" Grid.Row="1" MaxLength="40" MinHeight="34"/>
+    <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+      <Button Content="Mégse" Margin="0,0,9,0" Width="95" IsCancel="True"/>
+      <Button Content="Mentés" Width="100" Background="#176A73" Click="Save_Click" IsDefault="True"/>
+    </StackPanel>
+  </Grid>
+</Window>
